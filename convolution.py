@@ -16,7 +16,8 @@ def convolveMe(a,b):
         
     return ans
 
-    
+
+
 def make2Darray(a,b):
     """
         a: array
@@ -55,9 +56,30 @@ def getBase(a,i,j):
     """
     return i+j
 
+def circularConvolve(a,b):
+    N = max(len(a),len(b))
+    sizeA = len(a)
+    sizeB = len(b)
+    while(len(a)<N):
+        a[sizeA] = 0
+        sizeA+=1 
+    while(len(b)<N):
+        b[sizeB] = 0
+        sizeB+=1
+    matrix1=[]
+    for k in range(0,len(a)):
+        matrix1.append([a[k-i] for i in range(0,len(a))])
+    print(matrix1)
+    print(np.matmul(matrix1,[[b[i]] for i in range(0,len(b))])) # pyright: reportGeneralTypeIssues=false 
 
+    return "circle"
 a = [-1,2,0,1]
 b = [3,1,0,-1]
+c = [1,2,3,4]
+d = [2,1,2,1]
+e = [1,2,3,4]
+
+print(circularConvolve(d,e))
 
 print(convolveMe(a,b))
 print(getConvolutionFrom2DArray(make2Darray(a,b)))
