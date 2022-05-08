@@ -60,15 +60,15 @@ def circularConvolve(a,b):
     N = max(len(a),len(b))
     sizeA = len(a)
     sizeB = len(b)
+    ## padding
     while(len(a)<N):
         a[sizeA] = 0
         sizeA+=1 
     while(len(b)<N):
         b[sizeB] = 0
         sizeB+=1
-    matrix1=[]
-    for k in range(0,len(a)):
-        matrix1.append([a[k-i] for i in range(0,len(a))])
+    ## list comprehension magic
+    matrix1 = [[a[k-i] for i in range(0,len(a))] for k in range(0,len(a))]
     print(matrix1)
     print(np.matmul(matrix1,[[b[i]] for i in range(0,len(b))])) # pyright: reportGeneralTypeIssues=false 
 
