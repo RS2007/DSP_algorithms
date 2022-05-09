@@ -68,11 +68,8 @@ def circularConvolve(a,b):
         b[sizeB] = 0
         sizeB+=1
     ## list comprehension magic
-    matrix1 = [[a[k-i] for i in range(0,len(a))] for k in range(0,len(a))]
-    print(matrix1)
-    print(np.matmul(matrix1,[[b[i]] for i in range(0,len(b))])) # pyright: reportGeneralTypeIssues=false 
+    return (np.matmul([[a[k-i] for i in range(0,len(a))] for k in range(0,len(a))],[[b[i]] for i in range(0,len(b))])) # pyright: reportGeneralTypeIssues=false 
 
-    return "circle"
 a = [-1,2,0,1]
 b = [3,1,0,-1]
 c = [1,2,3,4]

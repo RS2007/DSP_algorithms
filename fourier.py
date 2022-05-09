@@ -20,4 +20,13 @@ def FFT(a):
     return "hello"
 
 a = [1,-1,2,2,4,2]
-print(DFTwithoutFFT(a))
+f = lambda x,N: np.sin(2*np.pi*x/N)
+
+
+def IDFT(a):
+    sizeA = len(a)
+    omega = np.exp(-2*np.pi*1j/sizeA)
+    matrix = [[(omega**(x*y)) for y in range(0,sizeA) ] for x in range(0,sizeA)]
+    return np.matmul(np.linalg.inv(matrix),a)
+
+print(IDFT([1,0,1,0]))
